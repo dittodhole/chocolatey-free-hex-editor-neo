@@ -1,4 +1,4 @@
-![](assets/icon.svg)
+![](assets/icon-256x256-hex-editor-neo.png)
 
 #  chocolatey-free-hex-editor-neo
 

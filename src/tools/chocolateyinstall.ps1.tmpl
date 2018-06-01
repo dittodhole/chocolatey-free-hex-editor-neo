@@ -1,15 +1,16 @@
-﻿$uninstallRegistryKey = Get-UninstallRegistryKey -SoftwareName 'HDD Software Free Hex Editor Neo [0-9]+\.[0-9]+'
+﻿$ErrorActionPreference = 'Stop'
 
 $packageArgs = @{
-  packageName = '$id$'
+  packageName = $env:ChocolateyPackageName
+  softwareName = 'HHD Software Free Hex Editor Neo [0-9]*.[0-9]*'
   fileType = 'exe'
   url = '$url$'
-  silentArgs = '-silent -machine'
+  silentArgs = 'WILL BE DETERMINED IN THE NEXT STEP'
   checksum = '$checksum$'
   checksumType = 'sha1'
 }
 
-if ($uninstallRegistryKey) {
+if (Get-UninstallRegistryKey -SoftwareName 'HDD Software Free Hex Editor Neo [0-9]+\.[0-9]+') {
   $packageArgs.silentArgs = '-silent -machine -type 2'
 } else {
   $packageArgs.silentArgs = '-silent -machine'

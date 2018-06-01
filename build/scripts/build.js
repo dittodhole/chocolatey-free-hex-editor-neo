@@ -1,7 +1,6 @@
 'use strict';
 
 const request = require('request');
-const JSONStream = require('JSONStream');
 const path = require('path');
 const fs = require('fs');
 const winVersionInfo = require('win-version-info');

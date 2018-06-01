@@ -1,11 +1,18 @@
-﻿$packageArgs = @{
+﻿$uninstallRegistryKey = Get-UninstallRegistryKey -SoftwareName 'HDD Software Free Hex Editor Neo [0-9]+\.[0-9]+'
+
+$packageArgs = @{
   packageName = '$id$'
   fileType = 'exe'
   url = '$url$'
   silentArgs = '-silent -machine'
   checksum = '$checksum$'
   checksumType = 'sha1'
-  validExitCodes = @(0)
+}
+
+if ($uninstallRegistryKey) {
+  $packageArgs.silentArgs = '-silent -machine -type 2'
+} else {
+  $packageArgs.silentArgs = '-silent -machine'
 }
 
 Install-ChocolateyPackage @packageArgs

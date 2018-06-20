@@ -1,19 +1,26 @@
-﻿$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = "Stop";
 
 $packageArgs = @{
   packageName = $env:ChocolateyPackageName
-  softwareName = 'HHD Software Free Hex Editor Neo [0-9]*.[0-9]*'
-  fileType = 'exe'
-  url = '$url$'
-  silentArgs = 'WILL BE DETERMINED IN THE NEXT STEP'
-  checksum = '$checksum$'
-  checksumType = 'sha1'
-}
+  softwareName = "HHD Software Free Hex Editor Neo*"
+  fileType = "exe"
+  silentArgs = "-silent -machine"
+  url = "$url$"
+  checksum = "$checksum$"
+  checksumType = "sha1"
+};
 
-if (Get-UninstallRegistryKey -SoftwareName 'HDD Software Free Hex Editor Neo [0-9]+\.[0-9]+') {
-  $packageArgs.silentArgs = '-silent -machine -type 2'
-} else {
-  $packageArgs.silentArgs = '-silent -machine'
+[array]$key = Get-InstallRegistryKey -SoftwareName $packageArgs.softwareName
+if ($key.Count -gt 0) {
+  Write-Debug "Previous version detected. Attempting in-place upgrade..."
+  $packageArgs.silentArgs = "-silent -machine -type 2"
 }
 
 Install-ChocolateyPackage @packageArgs
+
+$installLocation = Get-AppInstallLocation $packageArgs.softwareName
+if ($installLocation) {
+  Write-Host "$packageName installed to '$installLocation'"
+} else {
+  Write-Warning "Can't find install location"
+}

@@ -34,7 +34,9 @@ chocolatey-free-hex-editor-neo/build> npm install
 chocolatey-free-hex-editor-neo/build> npm run-script build
 ```
 
-This will create `chocolatey-free-hex-editor-neo/artifacts/free-hex-editor-neo.{version}.nupkg`.
+This will create the following artifacts:
+
+- `artifacts/free-hex-editor-neo.{version}.nupkg`
 
 ## License
 

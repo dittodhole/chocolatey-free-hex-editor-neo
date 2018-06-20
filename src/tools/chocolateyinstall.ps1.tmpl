@@ -2,7 +2,6 @@
 
 $packageArgs = @{
   packageName = $env:ChocolateyPackageName
-  softwareName = "HHD Software Free Hex Editor Neo*"
   fileType = "exe"
   silentArgs = "-silent -machine"
   url = "$url$"
@@ -10,7 +9,7 @@ $packageArgs = @{
   checksumType = "sha1"
 };
 
-[array]$key = Get-InstallRegistryKey -SoftwareName $packageArgs.softwareName
+[array]$key = Get-InstallRegistryKey -SoftwareName "HHD Software Free Hex Editor Neo*"
 if ($key.Count -gt 0) {
   Write-Debug "Previous version detected. Attempting in-place upgrade..."
   $packageArgs.silentArgs = "-silent -machine -type 2"
@@ -18,7 +17,7 @@ if ($key.Count -gt 0) {
 
 Install-ChocolateyPackage @packageArgs
 
-$installLocation = Get-AppInstallLocation $packageArgs.softwareName
+$installLocation = Get-AppInstallLocation "HHD Software Free Hex Editor Neo*"
 if ($installLocation) {
   Write-Host "$packageName installed to '$installLocation'"
 } else {

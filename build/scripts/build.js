@@ -28,7 +28,7 @@ const options = {
   rootPath: path.resolve('../'),
   srcPath: path.resolve('../src/'),
   tmpPath: path.resolve('./tmp/'),
-  setupUrl: 'http://hhdsoftware.co.uk/Download/free-hex-editor-neo.exe',
+  setupUrl: 'https://www.hhdsoftware.com/Download/free-hex-editor-neo.exe',
   iconUrl: 'https://www.hhdsoftware.com/images/icons/icon-256x256-hex-editor-neo.png',
   branch: process.env.APPVEYOR_REPO_BRANCH,
   buildNumber: process.env.APPVEYOR_BUILD_NUMBER
